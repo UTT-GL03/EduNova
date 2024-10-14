@@ -29,4 +29,14 @@ Cependant, l’éducation en ligne créé un flux numérique qui est à considé
 -	Au format utilisé
 -	Au tradeoff entre élagage/épuration de fonctionnalités et utilisabilité pour rester concurrentiel
 -	A proposer des solutions de téléchargement plutôt que de streaming, et héberger le contenu au plus près de l'utilisateur
--	A des pôles géographiques qui mutualisent les diffusions pour limiter l’effet rebond 
+-	A des pôles géographiques qui mutualisent les diffusions pour limiter l’effet rebond
+
+## Impact d'un scénario sur deux plateformes de e-learning
+Nous nous mettons ici à la place d'un étudiant, qui souhaite se forme sur un sujet en ligne. Le scénario consiste à :
+1. Se rendre sur la page d'accueil
+2. Se connecter
+3. Aller sur la page de sélection des cours
+4. Sélectionner le cours
+5. Lancer la vidéo
+
+Nous avons étudié l'impact d'un tel scénario sur deux plateformes connues dans le monde du e-learning, à savoir Coursera et OpenClassrooms. Ces 2 sites utilisent des CAPTCHAs afin de se connecter, nous avons donc du utiliser l'extension Chrome de Green IT pour réaliser notre étude. Les résultats sont disponibles [ici](https://github.com/UTT-GL03/EduNova/blob/main/benchmark.md).
