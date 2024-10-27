@@ -40,3 +40,19 @@ Nous nous mettons ici à la place d'un étudiant, qui souhaite se forme sur un s
 5. Lancer la vidéo
 
 Nous avons étudié l'impact d'un tel scénario sur deux plateformes connues dans le monde du e-learning, à savoir Coursera et OpenClassrooms. Ces 2 sites utilisent des CAPTCHAs afin de se connecter, nous avons donc du utiliser l'extension Chrome de Green IT pour réaliser notre étude. Les résultats sont disponibles [ici](https://github.com/UTT-GL03/EduNova/blob/main/benchmark.md).
+
+## Interfaces et jeu de données
+
+En parcourant les différents sites de e-learning, nous avons identifié trois interface principales qui permettent de rendre le site utilisable et fonctionnel : 
+- Page pour le choix des cours
+- Une fois le cours sélectionné, une page qui affiche toutes les vidéos composants le cours s'affiche
+- Une fois la vidéo sélectionné, une nouvelle page s'affiche, permettant de lire la vidéo et d'afficher un transcript en temps réel
+
+![Maquette page choix cours](./maquettes/page_choix_cours.png)
+__Fig.1__: Maquette de l'interface pour le choix du cours
+
+![Maquette page choix cours](./maquettes/page_choix_video.png)
+__Fig.2__: Maquette de l'interface pour le choix des vidéos d'un cours
+
+![Maquette page choix cours](./maquettes/page_video.png)
+__Fig.3__: Maquette de l'interface pour regarder une vidéo sélectionnée
