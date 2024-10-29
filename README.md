@@ -17,7 +17,7 @@ L’éducation est un pilier de la société. Elle permet :
 L’éducation est une ressource qui peut s’avérer difficile d’accès. Néanmoins, 2/3 de la population mondiale à aujourd’hui accès à Internet. L’apprentissage en ligne s’impose alors comme un moyen naturel d’améliorer l’accessibilité et la diffusion du savoir à plus grande échelle, pour améliorer l’accès à l’éducation.
 
 ## Impact écologique de la numérisation de l’éducation
-A première vue, la transition numérique de l’éducation et des formations tendraient à réduire :
+A première vue, la transition numérique de l’éducation et des formations tendrait à réduire :
 L’empreinte carbone des formations / séminaires, en moyenne :
 - :car: :monorail: ✈️ 50 g de CO2 par passager par km pour le transport ([Rapport ADEME](https://impactco2.fr/outils/transport)),
 - 🏨 :fork_and_knife: 10kg de CO2 par personne par nuit pour l’hébergement et la restauration ([Rapport ADEME](https://nosgestesclimat.fr/documentation/logement/vacances/empreinte-hotel-par-nuit)),
@@ -30,14 +30,14 @@ Cependant, l’éducation en ligne créé un flux numérique qui est à considé
 -	A des pôles géographiques qui mutualisent les diffusions pour limiter l’effet rebond.
 
 ## Impact d'un scénario sur deux plateformes de e-learning
-Nous nous mettons ici à la place d'un étudiant, qui souhaite se forme sur un sujet en ligne. Le scénario consiste à :
+Nous nous mettons ici à la place d'un étudiant, qui souhaite se former au deep learning sur internet. Le scénario consiste à accéder à une vidéo avec les étapes suivantes:
 1. Se rendre sur la page d'accueil
 2. Se connecter
 3. Aller sur la page de sélection des cours
 4. Sélectionner le cours
 5. Lancer la vidéo
 
-Nous avons étudié l'impact d'un tel scénario sur deux plateformes connues dans le monde du e-learning, à savoir Coursera et OpenClassrooms. Ces 2 sites utilisent des CAPTCHAs afin de se connecter, nous avons donc du utiliser l'extension Chrome de Green IT pour réaliser notre étude. Les résultats sont disponibles [ici](https://github.com/UTT-GL03/EduNova/blob/main/benchmark.md).
+Nous avons étudié l'impact d'un tel scénario sur deux plateformes connues dans le monde du e-learning, à savoir Coursera et OpenClassrooms. Ces 2 sites utilisent des CAPTCHAs afin de se connecter, nous avons donc du utiliser l'extension Chrome de Green IT pour réaliser notre étude. Les résultats sont disponibles dans [benchmark.md](https://github.com/UTT-GL03/EduNova/blob/main/benchmark.md).
 
 ## Interfaces et jeu de données
 
