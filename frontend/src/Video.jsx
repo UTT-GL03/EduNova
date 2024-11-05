@@ -16,7 +16,11 @@ function Video() {
         <header>
           <h2>{videotitle}</h2>
         </header>
-        <iframe src={"https://pod.utt.fr/video/1368-logarithme-discret_1mp4/?is_iframe=true"} width={"100%"} height={600} allowfullscreen ></iframe>
+        <div className="lect_video">
+        <video controls>
+          <source src={video} type={"video/mp4"} />
+        </video>
+        </div>
 
         {transcript.split('\n\n').map((x, i) =>
           <p key={i}>
