@@ -9,14 +9,14 @@ dayjs.locale('fr')
 
 function Video() {
   const {id} = useParams()
-  const {videotitle, transcript, image} = data.videos.find(x => id === x.issued)
+  const {videotitle, transcript, video} = data.videos.find(x => id === x.issued)
   return (
     <main className="container">
       <article>
         <header>
           <h2>{videotitle}</h2>
         </header>
-        <img src={image} alt={videotitle} class="coursVideo"/>
+        <iframe src={"https://pod.utt.fr/video/1368-logarithme-discret_1mp4/?is_iframe=true"} width={640} height={360} allowfullscreen ></iframe>
 
         {transcript.split('\n\n').map((x, i) =>
           <p key={i}>
