@@ -7,16 +7,16 @@ import data from './assets/sample_data.json'
 dayjs.extend(relativeTime)
 dayjs.locale('fr')
 
-function Headlines() {
-  const articlesByRow = Object.values(
-    Object.groupBy(data.articles, (x, i) => Math.floor(i/3))
+function ListeVideo() {
+  const videosByRow = Object.values(
+    Object.groupBy(data.videos, (x, i) => Math.floor(i/3))
   )
   return (
     <main className="container">
-      {articlesByRow.map((x, i) =>
+      {videosByRow.map((x, i) =>
         <div key={i} className="grid">
           {x.map((y, j) =>
-            <Headline {...y} key={j} />
+            <Video {...y} key={j} />
           )}
         </div>
       )}
@@ -24,11 +24,11 @@ function Headlines() {
   )
 }
 
-function Headline({videotitle, issued, section, image, id}) {
+function Video({videotitle, issued, image, id}) {
   return (
     <article>
       <header>
-        <p>Cours {id}</p>
+        <p>Video {id}</p>
       </header>
       <Link to={issued} className="miniature">
           <h2>{videotitle}</h2>
@@ -38,4 +38,4 @@ function Headline({videotitle, issued, section, image, id}) {
   )
 }
 
-export default Headlines
+export default ListeVideo
