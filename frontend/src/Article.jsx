@@ -9,7 +9,7 @@ dayjs.locale('fr')
 
 function Article() {
   const {id} = useParams()
-  const {heading, creator, issued, content, videotitle, transcript, image} = data.articles.find(x => id === x.issued)
+  const {heading, creator, issued, content, videotitle, transcript, video} = data.articles.find(x => id === x.issued)
   return (
     <main className="container">
       <article>
@@ -18,7 +18,7 @@ function Article() {
           <address> {creator} </address>
           <time> {dayjs(issued).format('LLLL')} </time>
         </header>
-        <img src={image} alt={heading} class="coursVideo"/>
+        <iframe src={video} alt={heading} width={640} height={360} allowfullscreen ></iframe>
 
         {transcript.split('\n\n').map((x, i) =>
           <p key={i}>
