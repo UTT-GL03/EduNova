@@ -6,7 +6,7 @@ function Video() {
   const [videodict, setVideo] = useState(null);
   
   useEffect(() => {
-    fetch('/src/assets/sample_data.json')
+    fetch('/sample_data.json')
       .then(x => x.json())
       .then(data => {
         const article = data.videos.find(x => id === x.issued);

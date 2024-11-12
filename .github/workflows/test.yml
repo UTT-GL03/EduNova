@@ -25,6 +25,7 @@ jobs:
         run: |
           cd frontend
           npm run build
+          cp -r src/assets dist
       - name: Start frontend
         run: |
           docker compose up --detach
