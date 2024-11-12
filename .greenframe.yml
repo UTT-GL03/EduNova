@@ -1,7 +1,7 @@
 baseURL: http://localhost
 projectName: EDUNOVA
 scenarios:
-    - path: ./benchmark/scenario1.js
+    - path: ./scenarios/scenario1.js
       name: Consulter les cours
 containers:
   - edunova-static_hosting-1
