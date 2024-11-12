@@ -35,4 +35,4 @@ jobs:
       - name: Measure carbon footprint
         uses: marmelab/greenframe-action@1.0.0
         env:
-          GREENFRAME_SECRET_TOKEN: "ca57390fca0fd99f0fd2bde2dd2a39d54bcac6f3"
+          GREENFRAME_SECRET_TOKEN: "60054d27039f4cd4ec162e31997803de94183fcc"
