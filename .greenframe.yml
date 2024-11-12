@@ -3,5 +3,7 @@ projectName: EDUNOVA
 scenarios:
     - path: ./scenarios/scenario1.js
       name: Consulter les cours
+    - path: ./scenarios/scenario2.js
+      name: Consulter une video de cours
 containers:
   - edunova-static_hosting-1
