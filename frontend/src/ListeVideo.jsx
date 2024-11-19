@@ -5,7 +5,7 @@ function ListeVideo() {
   const [videosByRow, setVideosByRow] = useState([])
 
   useEffect(() => {
-    fetch('/src/assets/sample_data.json')
+    fetch('/sample_data.json')
       .then(x => x.json())
       .then(data => {
         setVideosByRow(
