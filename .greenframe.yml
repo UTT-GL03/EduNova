@@ -5,7 +5,5 @@ scenarios:
       name: Consulter les cours
     - path: ./scenarios/scenario2.js
       name: Consulter une video de cours
-    - path: ./scenarios/scenario3.js
-      name: Consulter un cours sur OpenClassrooms
 containers:
   - edunova-static_hosting-1
