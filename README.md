@@ -83,3 +83,6 @@ Dans ce prototype, les données sont chargées directement par le frontend. L'ou
 Pour avoir un point de comparaison, voici le rapport sur un site OpenClassroom, une référence du domaine :
 
 ![greenframe openclassroom](scenarios/greenframe_openclassroom.png)
+
+## Prototype n°4 Passage à l'échelle
+On simule le passage à des dizaines de créateurs en augmentant à 200 le nombre de vidéos.
