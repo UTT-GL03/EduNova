@@ -25,7 +25,12 @@ jobs:
         run: |
           cd frontend
           npm run build
-          tree
+      - name:  Copy images
+      # copy 200 times the same image to simulate a real project
+        run: |
+          cd frontend/dist
+          for i in {1..200}; do cp videoframe_1920.png videoframe_1920_$i.png; done
+
       # - name: Generate sample
       #   run: |
       #     cd frontend
