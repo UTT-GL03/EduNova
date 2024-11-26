@@ -25,6 +25,7 @@ jobs:
         run: |
           cd frontend
           npm run build
+          tree
       - name: Generate sample
         run: |
           cd frontend
