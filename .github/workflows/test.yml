@@ -33,7 +33,6 @@ jobs:
       - name: Start frontend
         run: |
           docker compose up --detach
-          echo ${{secrets.GREENFRAME_SECRET_TOKEN}}
       - name: Wait for frontend
         uses: docker://benel/wait-for-response:1
         with:
