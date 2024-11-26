@@ -5,23 +5,23 @@ function ListeVideo() {
   const [videosByRow, setVideosByRow] = useState([])
 
   useEffect(() => {
-    fetch('/sample_data.json')
+    fetch('http://localhost:5984/edunova/_all_docs?include_docs=true')
       .then(x => x.json())
       .then(data => {
         setVideosByRow(
           Object.values(
-            Object.groupBy(data.videos, (x, i) => Math.floor(i/3))
+            Object.groupBy(data.rows, (x, i) => Math.floor(i/3))
           )
         )
       })
   }, [])
-
+  
   return (
     <main className="container">
       {videosByRow.map((x, i) =>
         <div key={i} className="grid">
           {x.map((y, j) =>
-            <Video {...y} key={j} />
+            <Video {...y.doc} key={j} />
           )}
         </div>
       )}
@@ -29,13 +29,13 @@ function ListeVideo() {
   )
 }
 
-function Video({videotitle, issued, image, id}) {
+function Video({_id, videotitle, image}) {
   return (
     <article>
       <header>
-        <p>Video {id}</p>
+        <p>{_id}</p>
       </header>
-      <Link to={issued} className="miniature">
+      <Link to={_id} className="miniature">
           <h2>{videotitle}</h2>
           <img src={image} alt={videotitle} className="bottom-image"/>
       </Link>

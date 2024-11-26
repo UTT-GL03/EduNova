@@ -6,11 +6,10 @@ function Video() {
   const [videodict, setVideo] = useState(null);
   
   useEffect(() => {
-    fetch('/sample_data.json')
+    fetch(`http://localhost:5984/edunova/${id}`)
       .then(x => x.json())
       .then(data => {
-        const article = data.videos.find(x => id === x.issued);
-        setVideo(article || {});
+        setVideo(data);
       })
       .catch(error => {
         console.error("Erreur lors du chargement des données :", error);
