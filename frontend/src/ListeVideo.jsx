@@ -9,7 +9,7 @@ function ListeVideo() {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        sort: [{ _id: "desc" }],
+        selector: { image: { $gt: null } },
         fields: [ "_id", "videotitle", "image"],
         limit: 25
       })
@@ -18,7 +18,7 @@ function ListeVideo() {
     .then(data => {
       setVideosByRow(
         Object.values(
-          Object.groupBy(data.rows, (x, i) => Math.floor(i/3))
+          Object.groupBy(data.docs, (x, i) => Math.floor(i/3))
         )
       )
     })
@@ -29,7 +29,7 @@ function ListeVideo() {
       {videosByRow.map((x, i) =>
         <div key={i} className="grid">
           {x.map((y, j) =>
-            <Video {...y.doc} key={j} />
+            <Video {...y} key={j} />
           )}
         </div>
       )}
