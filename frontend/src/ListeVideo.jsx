@@ -14,14 +14,14 @@ function ListeVideo() {
         limit: 25
       })
     })
-      .then(x => x.json())
-      .then(data => {
-        setVideosByRow(
-          Object.values(
-            Object.groupBy(data.rows, (x, i) => Math.floor(i/3))
-          )
+    .then(x => x.json())
+    .then(data => {
+      setVideosByRow(
+        Object.values(
+          Object.groupBy(data.rows, (x, i) => Math.floor(i/3))
         )
-      })
+      )
+    })
   }, [])
   
   return (
