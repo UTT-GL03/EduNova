@@ -1,12 +1,12 @@
 {
   "docs": [
-    {{#repeat 20000}}
+    {{#repeat 2000}}
     {
       "_id": "course{{@index}}",
       "videotitle": "{{lorem min=3 max=7}}",
       "transcript": "{{#repeat min=1 max=15 comma=false}}{{lorem min=5 max=120}}\n\n{{/repeat}}",
-      "video": "/video.mp4?v={{@index}}",
-      "image": "/videoframe_1920.png?v={{@index}}"
+      "video": "/video.mp4",
+      "image": "/videoframe_1920.png"
     }
     {{/repeat}}
   ]
