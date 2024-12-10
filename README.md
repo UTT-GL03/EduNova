@@ -98,11 +98,9 @@ __Fig.5__: Consommation de ressources par le serveur Web lors de la consultation
 
 Pour avoir un point de comparaison, voici le rapport sur un site OpenClassroom, une référence du domaine (cf. Fig.6). Sur OpenClassrooms, la vidéo est chargée au moment du lancement par l'utilisateur déjà authentifié (clique sur le bouton "play"). Comme il est impossible de s'authentifier via greenframe, le scénarion de consultation de la page de cours n'inclue pas l'impact de chargement de la vidéo du cours.
 
-On voit que la consommation est supérieure sur tous les points, notamment au niveau de la consommation de l'écran et du CPU. Au niveau du réseau, ce n'est pas vraiment comparable à ce stade étant donnée que notre site fait une unique requête et utilise des données statiques.
+On voit que la consommation est supérieure sur tous les points, même sans vidéo, notamment au niveau de la consommation de l'écran et du CPU. Au niveau du réseau, ce n'est pas vraiment comparable à ce stade étant donnée que notre site fait une unique requête et utilise des données statiques.
 
 ![greenframe openclassroom](greenframe/Consommation_OpenClassrooms.png)
-
-__Fig.6__: Consommation des ressources lors de la consultation de la page d'accueil d'un cours sur OpenClassrooms.
 
 __Fig.6__: Consommation des ressources lors de la consultation de la page d'accueil d'un cours sur OpenClassrooms.
 
