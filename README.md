@@ -82,7 +82,7 @@ __Tab.2__: Évaluation de l'impact du scénario "Consulter une vidéo de cours" 
 ## Prototype n°2
 Dans cette version du prototype, les données statiques sont désormais chargées par le frontend à travers le réseau immédiatement après un premier affichage à vide. Une page affichée correspond à une requête sur le réseau.
 
-En ce qui concerne l'évaluation de l'impact environnemental du scénario, les résultats, à l'exception du nombre de requêtes incrémenté de 1, restent identiques à ceux présentés dans le tableau précédent (cf. Tab.2). Par ailleurs, à partir de cette version, sauf modifications majeures, l'EcoIndex ne devrait plus subir d'évolution significative. Nous passerons désormais à l'utilisation d'un autre outil, GreenFrame, qui se concentre sur l'évaluation de l'impact direct de la consultation (sans inclure la contribution au cycle de vie du terminal). Cet outil, plus fiable, s'appuie sur les statistiques d'utilisation des ressources physiques (CPU, mémoire, réseau, disque) pour fournir une analyse précise (cf. Tab.3). Pour utiliser GreenFrame, nous avons du déployer notre application avec Docker.
+En ce qui concerne l'évaluation de l'impact environnemental du scénario, les résultats, à l'exception du nombre de requêtes incrémenté de 1, restent identiques à ceux présentés dans le tableau précédent (cf. Tab.2). Par ailleurs, à partir de cette version, sauf modifications majeures, l'EcoIndex ne devrait plus subir d'évolution significative. Nous passerons désormais à l'utilisation d'un autre outil, GreenFrame, qui se concentre sur l'évaluation de l'impact direct de la consultation (sans inclure la contribution au cycle de vie du terminal). Cet outil, plus fiable, s'appuie sur les statistiques d'utilisation des ressources physiques (CPU, mémoire, réseau, disque) pour fournir une analyse précise. Pour utiliser GreenFrame, nous avons du déployer notre application avec Docker.
 
 Dans le cas de notre prototype, le graphique (cf. Fig. 4) révèle un seul pic notable de consommation, à la fois pour le CPU et le réseau. De plus, cette consommation ne représente que 7 % de la consommation totale mesurée, le reste étant majoritairement attribué à l'écran sur toute la durée de l'analyse. Cela s'explique par le fait que les photos, vidéos et données quantitatives utilisées pour les cours sont encore statiques à ce stade.
 
@@ -103,6 +103,12 @@ On voit que la consommation est supérieure sur tous les points, même sans vid�
 ![greenframe openclassroom](greenframe/Consommation_OpenClassrooms.png)
 
 __Fig.6__: Consommation des ressources lors de la consultation de la page d'accueil d'un cours sur OpenClassrooms.
+
+## Prototype n°3 Intégration d'une base de données pour le scénario principal
+
+Pour la troisième version du prototype, les données sont désormais stockées dans un système de base de données interrogeable à travers une API Web (CouchDB). L'intérêt d'une source de données dynamique est d'une part, à terme, de pouvoir ajouter ou modifier des articles plus facilement, et d'autre part de déporter sur le serveur le filtrage des données pertinentes.
+
+Cette baisse d'impact du réseau est cependant largement compensée par une utilisation du CPU par la base de données, utilisation qui semble par ailleurs continue (cf. Fig.8).
 
 ## Prototype n°4 Passage à l'échelle
 On simule le passage à des dizaines de créateurs en augmentant à 200 le nombre de vidéos.
