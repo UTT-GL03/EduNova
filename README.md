@@ -61,28 +61,40 @@ Nous avons créé une page d'accueil listant les vidéos disponibles.
 
 Pour nous donner une première idée, un benchmark de l'impact environnemental de la page d'accueil a été réalisé pour nous comparer aux autres acteurs du domaine. Les résultats sont encourrageants, car la note des autres site oscile entre E et G.
 
-| Environnement                                | Nombre requêtes | Taille (ko) | Taille du dom | GES (gCO2e)  | Eau (cl) | ecoIndex | Note              |
-| --------------------------------------- | --------------- | ----------- | ------------- | ---- | ---- | -------- | ----              |
-| Chargement de la page d’accueil         | 22             | 1 879       | 49        | 1,34 | 2,02 | 82.81     | :green_circle: A    |
-| Connexion et retour à la page d'accueil | 5              | 342       | 46        | 1,14 | 1,71 | 92,88    | :green_circle: A |
+| Environnement                                | Nombre requêtes | Taille (ko) | Taille du dom | GES (gCO2e)  | ecoIndex | Note              |
+| --------------------------------------- | --------------- | ----------- | ------------- | ---- | -------- | ----              |
+| Chargement de la page d’accueil         | 22             | 1 879       | 49        | 1,34 | 82.81     | :green_circle: A    |
+| Connexion et retour à la page d'accueil | 5              | 342       | 46        | 1,14 | 92,88    | :green_circle: A |
+
+__Tab.1__: Évaluation de l'impact du prototype de la page d'accueil.
 
 En reprenant notre [scénario n°1](benchmark.md) pour évaluer l'impact en simulant une utilisation normale on obtient ce tableau de résulats :
 
-| Scénario                                | Nombre requêtes | Taille (ko) | Taille du dom | GES (gCO2e) | Eau (cl) | ecoIndex | Note              |
-| --------------------------------------- | --------------- | ----------- | ------------- | ---- | ---- | -------- | ----              |
-| Chargement de la page d’accueil         | 5               | 342         | 46            | 1,14 | 1,71 | 92,88    | :green_circle: A    |
-| Choisir un cours                        | 6               | 412       | 29       | 1,13 | 1,70 | 93,30     | :green_circle: A    |
-| Visionnage du cours                     | 7               | 18 637      | 29         | 1,39  | 2,09 | 80,28     | :green_circle: A    |
-| Total                                   | **18**          | **19 391**  | **104**    |      |      |          |                   |
+| Scénario                                | Nombre requêtes | Taille (ko) | Taille du dom | GES (gCO2e)  | ecoIndex | Note              |
+| --------------------------------------- | --------------- | ----------- | ------------- | ---- | -------- | ----              |
+| Chargement de la page d’accueil         | 5               | 342         | 46            | 1,14 | 92,88    | :green_circle: A    |
+| Choisir un cours                        | 6               | 412       | 29       | 1,13 | 93,30     | :green_circle: A    |
+| Visionnage du cours                     | 7               | 18 637      | 29         | 1,39  | 80,28     | :green_circle: A    |
+| Total                                   | **18**          | **19 391**  | **104**    |      |          |                   |
+
+__Tab.2__: Évaluation de l'impact du scénario "Consulter une vidéo de cours" dans le prototype n°1.
 
 ## Prototype n°2
-Dans ce prototype, les données sont chargées directement par le frontend. L'outil GreenFrame nous permet de mesurer plus finement la consommation de chaque composant.
+Dans cette version du prototype, les données statiques sont désormais chargées par le frontend à travers le réseau immédiatement après un premier affichage à vide. Une page affichée correspond à une requête sur le réseau.
+
+En ce qui concerne l'évaluation de l'impact environnemental du scénario, les résultats, à l'exception du nombre de requêtes incrémenté de 1, restent identiques à ceux présentés dans le tableau précédent (cf. Tab.2). Par ailleurs, à partir de cette version, sauf modifications majeures, l'EcoIndex ne devrait plus subir d'évolution significative. Nous passerons désormais à l'utilisation d'un autre outil, GreenFrame, qui se concentre sur l'évaluation de l'impact direct de la consultation (sans inclure la contribution au cycle de vie du terminal). Cet outil, plus fiable, s'appuie sur les statistiques d'utilisation des ressources physiques (CPU, mémoire, réseau, disque) pour fournir une analyse précise (cf. Tab.3). Pour utiliser GreenFrame, nous avons du déployer notre application avec Docker.
+
+
 
 ![consomation accueil greenframe](scenarios/greenframe_edunova.png)
+
+__Fig.4__: Consommation des ressources lors de la consultation de la page d'accueil de notre site.
 
 Pour avoir un point de comparaison, voici le rapport sur un site OpenClassroom, une référence du domaine :
 
 ![greenframe openclassroom](scenarios/greenframe_openclassroom.png)
+
+__Fig.5__: Consommation des ressources lors de la consultation de la page d'accueil d'un cours sur OpenClassrooms.
 
 ## Prototype n°4 Passage à l'échelle
 On simule le passage à des dizaines de créateurs en augmentant à 200 le nombre de vidéos.
