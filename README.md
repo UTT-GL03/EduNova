@@ -84,17 +84,27 @@ Dans cette version du prototype, les données statiques sont désormais chargée
 
 En ce qui concerne l'évaluation de l'impact environnemental du scénario, les résultats, à l'exception du nombre de requêtes incrémenté de 1, restent identiques à ceux présentés dans le tableau précédent (cf. Tab.2). Par ailleurs, à partir de cette version, sauf modifications majeures, l'EcoIndex ne devrait plus subir d'évolution significative. Nous passerons désormais à l'utilisation d'un autre outil, GreenFrame, qui se concentre sur l'évaluation de l'impact direct de la consultation (sans inclure la contribution au cycle de vie du terminal). Cet outil, plus fiable, s'appuie sur les statistiques d'utilisation des ressources physiques (CPU, mémoire, réseau, disque) pour fournir une analyse précise (cf. Tab.3). Pour utiliser GreenFrame, nous avons du déployer notre application avec Docker.
 
+Dans le cas de notre prototype, le graphique (cf. Fig. 4) révèle un seul pic notable de consommation, à la fois pour le CPU et le réseau. De plus, cette consommation ne représente que 7 % de la consommation totale mesurée, le reste étant majoritairement attribué à l'écran sur toute la durée de l'analyse. Cela s'explique par le fait que les photos, vidéos et données quantitatives utilisées pour les cours sont encore statiques à ce stade.
 
-
-![consomation accueil greenframe](scenarios/greenframe_edunova.png)
+![consomation accueil greenframe](greenframe/Consommation_PageAccueilBrowser_PT2.png)
 
 __Fig.4__: Consommation des ressources lors de la consultation de la page d'accueil de notre site.
 
-Pour avoir un point de comparaison, voici le rapport sur un site OpenClassroom, une référence du domaine :
+Par ailleurs, il nous est possible désormais d'évaluer l'impact écologique de la partie "serveur", possiblement hébergée par un data center (cf. Fig.5). Réduite au simple hébergement de données statiques sur un serveur Web, cette partie a pour l'instant un impact très faible et quasi négligeable (3%) par rapport à la partie "client".
 
-![greenframe openclassroom](scenarios/greenframe_openclassroom.png)
+![consomation accueil greenframe](greenframe/Consommation_PageAccueilHost_PT2.png)
 
-__Fig.5__: Consommation des ressources lors de la consultation de la page d'accueil d'un cours sur OpenClassrooms.
+__Fig.5__: Consommation de ressources par le serveur Web lors de la consultation d'un cours dans notre prototype.
+
+Pour avoir un point de comparaison, voici le rapport sur un site OpenClassroom, une référence du domaine (cf. Fig.6). Sur OpenClassrooms, la vidéo est chargée au moment du lancement par l'utilisateur déjà authentifié (clique sur le bouton "play"). Comme il est impossible de s'authentifier via greenframe, le scénarion de consultation de la page de cours n'inclue pas l'impact de chargement de la vidéo du cours.
+
+On voit que la consommation est supérieure sur tous les points, notamment au niveau de la consommation de l'écran et du CPU. Au niveau du réseau, ce n'est pas vraiment comparable à ce stade étant donnée que notre site fait une unique requête et utilise des données statiques.
+
+![greenframe openclassroom](greenframe/Consommation_OpenClassrooms.png)
+
+__Fig.6__: Consommation des ressources lors de la consultation de la page d'accueil d'un cours sur OpenClassrooms.
+
+__Fig.6__: Consommation des ressources lors de la consultation de la page d'accueil d'un cours sur OpenClassrooms.
 
 ## Prototype n°4 Passage à l'échelle
 On simule le passage à des dizaines de créateurs en augmentant à 200 le nombre de vidéos.
