@@ -7,3 +7,4 @@ scenarios:
       name: Consulter une video de cours
 containers:
   - edunova-static_hosting-1
+  - edunova-backend-1
