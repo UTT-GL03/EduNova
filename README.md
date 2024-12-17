@@ -133,11 +133,25 @@ __Fig.12__: Consommation des ressources par le client lors de la consultation d'
 
 __Fig.13__: Consommation des ressources par le serveur Web lors de la consultation d'une video de cours de notre site.
 
-![greenframe openclassroom](greenframe/PT3_DB_VideoCours.png)
+![greenframe openclassroom](greenframe/PT3_BD_VideoCours.png)
 
 __Fig.14__: Consommation des ressources par CouchDB lors de la consultation d'une video de cours de notre site.
 
 Cette baisse d'impact du réseau est cependant largement compensée par une utilisation du CPU par la base de données, utilisation qui semble par ailleurs continue (cf. Fig.14).
 
 ## Prototype n°4 Passage à l'échelle
-On simule le passage à des dizaines de créateurs en augmentant à 200 le nombre de vidéos.
+On simule le passage à des dizaines de créateurs en augmentant à 2000 le nombre de vidéos.
+
+Pas besoin d'afficher les consommation de la consultation d'une vidéo de cours, le scaling affecte uniquement la page d'accueil.
+
+![greenframe openclassroom](greenframe/PT4_Browser_PageCours.png)
+
+__Fig.15__: Consommation des ressources par le client lors de la consultation d'une video de cours de notre site.
+
+![greenframe openclassroom](greenframe/PT4_Host_PageCours.png)
+
+__Fig.16__: Consommation des ressources par le serveur Web lors du chargement de la page d'accueil.
+
+![greenframe openclassroom](greenframe/PT4_BD_PageCours.png)
+
+__Fig.17__: Consommation des ressources par CouchDB lors de du chargement de la page d'accueil.
