@@ -2,7 +2,7 @@
 Plateforme d'apprentissage en ligne soucieuse de son impact écologique.
 
 ## Unis par l’apprentissage autonome et accessible
-Nous serons, en tant que futurs ingénieurs, intégrés à un environnement de travail en constante évolution. Nous avons besoin de pouvoir monter en compétences et de suivre les dernières tendances de notre secteur d’activités.
+Nous serons, en tant qu'ingénieurs, intégrés à un environnement de travail en constante évolution. Nous avons besoin de pouvoir monter en compétences et de suivre les dernières tendances de notre secteur d’activités.
 
 Nous sommes également, en tant que jeunes adultes, des personnes curieuses de se développer personnellement et de s’investir dans divers loisirs.
 
@@ -20,13 +20,9 @@ L’éducation est une ressource qui peut s’avérer difficile d’accès. Néa
 A première vue, la transition numérique de l’éducation et des formations tendrait à réduire l'empreinte carbone des formations / séminaires, quantifiée en moyenne par :
 - 50g de CO2 par passager par km pour le transport ([Rapport ADEME](https://impactco2.fr/outils/transport)),
 - 10kg de CO2 par personne par nuit pour l’hébergement et la restauration ([Rapport ADEME](https://nosgestesclimat.fr/documentation/logement/vacances/empreinte-hotel-par-nuit)),
-- utilisation de support (papier ou numériques) difficile à quantifier.
+- utilisation de support (papier ou numérique) difficile à quantifier.
 
-Cependant, l’éducation en ligne créé un flux numérique qui est à considérer. De plus, son but intrinsèque est d’être le plus démocratisé possible, et ce projet peut-être soumis à un potentiel effet rebond. Pour limiter ces facteurs qui rendraient le projet moins impactant, il est important de réfléchir :
--	au format utilisé,
--	au tradeoff entre élagage/épuration de fonctionnalités et utilisabilité pour rester concurrentiel,
--	à proposer des solutions de téléchargement plutôt que de streaming, et héberger le contenu au plus près de l'utilisateur,
--	à des pôles géographiques qui mutualisent les diffusions pour limiter l’effet rebond.
+Cependant, l’éducation en ligne créé un flux numérique qui est à considérer. De plus, son but intrinsèque est d’être le plus démocratisé possible, et ce projet peut-être soumis à un potentiel effet rebond. Pour limiter ces facteurs qui rendraient le projet moins impactant, il est important de réfléchir aux compromis entre suppression de fonctionnalités et utilisabilité pour rester concurrentiel
 
 ## Impact d'un scénario sur deux plateformes de e-learning
 Nous nous mettons ici à la place d'un étudiant, qui souhaite se former au deep learning sur internet. Le scénario consiste à accéder à une vidéo avec les étapes suivantes:
@@ -137,11 +133,25 @@ __Fig.12__: Consommation des ressources par le client lors de la consultation d'
 
 __Fig.13__: Consommation des ressources par le serveur Web lors de la consultation d'une video de cours de notre site.
 
-![greenframe openclassroom](greenframe/PT3_DB_VideoCours.png)
+![greenframe openclassroom](greenframe/PT3_BD_VideoCours.png)
 
 __Fig.14__: Consommation des ressources par CouchDB lors de la consultation d'une video de cours de notre site.
 
 Cette baisse d'impact du réseau est cependant largement compensée par une utilisation du CPU par la base de données, utilisation qui semble par ailleurs continue (cf. Fig.14).
 
 ## Prototype n°4 Passage à l'échelle
-On simule le passage à des dizaines de créateurs en augmentant à 200 le nombre de vidéos.
+On simule le passage à des dizaines de créateurs en augmentant à 2000 le nombre de vidéos.
+
+Pas besoin d'afficher les consommation de la consultation d'une vidéo de cours, le scaling affecte uniquement la page d'accueil.
+
+![greenframe openclassroom](greenframe/PT4_Browser_PageCours.png)
+
+__Fig.15__: Consommation des ressources par le client lors de la consultation d'une video de cours de notre site.
+
+![greenframe openclassroom](greenframe/PT4_Host_PageCours.png)
+
+__Fig.16__: Consommation des ressources par le serveur Web lors du chargement de la page d'accueil.
+
+![greenframe openclassroom](greenframe/PT4_BD_PageCours.png)
+
+__Fig.17__: Consommation des ressources par CouchDB lors de du chargement de la page d'accueil.
