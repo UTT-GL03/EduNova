@@ -71,7 +71,7 @@ En reprenant notre [scénario n°1](benchmark.md) pour évaluer l'impact en simu
 | Chargement de la page d’accueil         | 5               | 342         | 46            | 1,14 | 92,88    | :green_circle: A    |
 | Choisir un cours                        | 6               | 412       | 29       | 1,13 | 93,30     | :green_circle: A    |
 | Visionnage du cours                     | 7               | 18 637      | 29         | 1,39  | 80,28     | :green_circle: A    |
-| Total                                   | **18**          | **19 391**  | **104**    |      |          |                   |
+| Total                                   | **18**          | **19 391**  | **104**    | **3,66** |          |                   |
 
 __Tab.2__: Évaluation de l'impact du scénario "Consulter une vidéo de cours" dans le prototype n°1.
 
