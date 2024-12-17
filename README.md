@@ -154,11 +154,16 @@ __Fig.16__: Consommation des ressources par le serveur Web lors du chargement de
 
 ![greenframe openclassroom](greenframe/PT4_BD_PageCours.png)
 
-__Fig.17__: Consommation des ressources par la base de données lors du chargement de la page d'accueil. Valeurs de références en comparaison : Scénario de mise à l'échelle, avec le chargement des 2000 items.
-
+__Fig.17__: Consommation des ressources par la base de données lors du chargement de la page d'accueil.
 
 Limitation du nombre d'item chargé dans la page principale avec la requette Mango (24 items par requête).
 
 ![greenframe openclassroom](greenframe/PT4_Requête_Mango.png)
 
-__Fig.18__: Evolution de la consommation des ressources, en utilisant la requête Mango.
+__Fig.18__: Consommation des ressources par la base de données lors du chargement de la page d'accueil. Valeurs de référence pour la comparaison : Scénario de mise à l'échelle, avec le chargement des 2000 items.
+
+## Prototype n°5 Compression des vidéos
+
+![greenframe openclassroom](greenframe/passage_webm.png)
+
+__Fig.19__: Consommation des ressources par la base de données lors du chargement d'une vidéo de cours, compressée au format webm. Valeurs de référence pour la comparaison : Scénario avec la requête Mango.
