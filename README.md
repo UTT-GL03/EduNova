@@ -140,30 +140,34 @@ __Fig.14__: Consommation des ressources par CouchDB lors de la consultation d'un
 Cette baisse d'impact du réseau est cependant largement compensée par une utilisation du CPU par la base de données, utilisation qui semble par ailleurs continue (cf. Fig.14).
 
 ## Prototype n°4 Passage à l'échelle
-On simule le passage à des dizaines de créateurs en augmentant à 2000 le nombre de vidéos.
+On simule le passage à des centaines de créateurs en augmentant de 20 à 2000 le nombre de vidéos (environ 20 vidéos par créateurs, soit 1 à 2 mois de travail environ). Dans cette partie, on ne s'intéresse qu'à la consommation en ressources la page d'accueil. En effet, la consultation d'une vidéo de cours n'est pas impactée par le passage à l'échelle : qu'il y ait 20 ou 2000 vidéos, la page de consultation n'en charge qu'une seule. Nous obtiendrions les même résultats que les précédents.
 
-Pas besoin d'afficher les consommation de la consultation d'une vidéo de cours, le scaling affecte uniquement la page d'accueil.
+Le changement le plus frappant, mais prévisible, est l'augmentation de l'utilisation du réseau par CouchDB (__Fig.16__) et par le client (__Fig.15__). En effet, lors du chargement de la page d'accueil, les 2000 miniatures des vidéos de cours (2000 images de 0,228 Mo) sont requêtées à travers le réseau. Nous avons volontairement retiré l'utilisation du cache, pour simuler le fait que toutes les miniatures chargées par le site sont différentes. On observe également une augmentation considérable de l'utilisation du CPU.
+
+En passant de 20 à 2000, on multiplie environ par 100 l'utilisation du réseau, et par 20 l'utilisation CPU du client et de CouchDB.
 
 ![greenframe openclassroom](greenframe/PT4_Browser_PageCours.png)
 
 __Fig.15__: Consommation des ressources par le client lors de la consultation d'une video de cours de notre site.
 
-![greenframe openclassroom](greenframe/PT4_Host_PageCours.png)
-
-__Fig.16__: Consommation des ressources par le serveur Web lors du chargement de la page d'accueil.
-
 ![greenframe openclassroom](greenframe/PT4_BD_PageCours.png)
 
-__Fig.17__: Consommation des ressources par la base de données lors du chargement de la page d'accueil.
+__Fig.16__: Consommation des ressources par la base de données lors du chargement de la page d'accueil.
 
-Limitation du nombre d'item chargé dans la page principale avec la requette Mango (24 items par requête).
+Pour limiter les effets de mise à l'échelle, on réduit nombre d'item chargé dans la page principale avec la requette Mango (24 items par requête). Cela est une solution qui semble raisonnable, étant donné qu'un utilisateur n'a pas besoin que le site charge tous les cours disponibles.
+
+Comme on limite le nombre de cours affichés à l'utilisateurs, il faut choisir les cours pertinents à afficher. On peut choisir parmi 2 stratégies :
+- Afficher en premier les cours les plus récents (publiés le plus proche de la date de consultation)
+- Afficher en premier les cours à l'aide d'un algorithme de recommendation (pertinence, vidéo pour lesquelles l'utilisateur n'a pas fini le visionnage, ...)
+
+De par le coût en ressources et la complexité d'un algorithme de recommendation, nous nous sommes orientés vers la solution la plus simple. Seulement les cours les plus récemment publiés sont affichés en premier à l'utilisateur. Le résultat de cette décision a largement optimisé l'utilisation des ressources avec 2000 vidéos (cf. __Fig.17__).
 
 ![greenframe openclassroom](greenframe/PT4_Requête_Mango.png)
 
-__Fig.18__: Consommation des ressources par la base de données lors du chargement de la page d'accueil. Valeurs de référence pour la comparaison : Scénario de mise à l'échelle, avec le chargement des 2000 items.
+__Fig.17__: Consommation des ressources par la base de données lors du chargement de la page d'accueil. Valeurs de référence pour la comparaison : Scénario de mise à l'échelle, avec le chargement des 2000 items.
 
 ## Prototype n°5 Compression des vidéos
 
 ![greenframe openclassroom](greenframe/passage_webm.png)
 
-__Fig.19__: Consommation des ressources par la base de données lors du chargement d'une vidéo de cours, compressée au format webm. Valeurs de référence pour la comparaison : Scénario avec la requête Mango.
+__Fig.18__: Consommation des ressources par la base de données lors du chargement d'une vidéo de cours, compressée au format webm. Valeurs de référence pour la comparaison : Scénario avec la requête Mango.
