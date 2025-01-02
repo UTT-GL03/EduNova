@@ -33,7 +33,7 @@ Pour réussir à produire une plateforme de e-learning avec un impact carbone mi
 - Encourager les créateurs de contenus à s'orienter vers des supports de transmission plus sobres (image, texte, audio), et n'utiliser la vidéo uniquement lorsque cela est nécessaire
 - Limiter au mieux l'empreinte carbone de diffusion de supports à forte émissions, en compressant par exemple les données
 
-## Impact d'un scénario sur deux plateformes de e-learning
+## Scénario prioritaire : Consulter une vidéo de cours
 Nous nous mettons ici à la place d'un étudiant, qui souhaite se former au deep learning sur internet. Le scénario consiste à accéder à une vidéo avec les étapes suivantes:
 1. Se rendre sur la page d'accueil
 2. Se connecter
@@ -45,35 +45,30 @@ Nous avons étudié l'impact d'un tel scénario sur deux plateformes connues dan
 
 ## Interfaces et jeu de données
 
-En parcourant les différents sites de e-learning, nous avons identifié trois interface principales qui permettent de rendre le site utilisable et fonctionnel : 
-- page pour le choix des cours,
-- une fois le cours sélectionné, une page qui affiche toutes les vidéos composants le cours s'affiche,
-- une fois la vidéo sélectionné, une nouvelle page s'affiche, permettant de lire la vidéo et d'afficher un transcript en temps réel.
+En parcourant les différents sites de e-learning, nous avons identifié deux interface principales qui permettent de rendre le site utilisable et fonctionnel : 
+- Une page avec un ensemble de vidéos de cours,
+- une fois la vidéo sélectionnée, une nouvelle page s'affiche, permettant de lire la vidéo et d'afficher un transcript en temps réel.
 
 ![Maquette page choix cours](./maquettes/page_choix_cours.png)
 __Fig.1__: Maquette de l'interface pour le choix du cours
 
-![Maquette page choix cours](./maquettes/page_choix_video.png)
-__Fig.2__: Maquette de l'interface pour le choix des vidéos d'un cours
-
 ![Maquette page choix cours](./maquettes/page_video.png)
-__Fig.3__: Maquette de l'interface pour regarder une vidéo sélectionnée
+__Fig.2__: Maquette de l'interface pour regarder une vidéo sélectionnée
 
-## Prototype n°1 : Chargement statique des données
+## Prototype n°1 : Scénario prioritaire avec chargement statique des données
+
+Pour cette première version du prototype :
+- L'ensemble des données liées aux cours est chargé dans le code de manière statique,
+- Les fonctionnalités implémentées ne sont que celles nécessaires pour suivre le scénario prioritaire ("Consulter une vidéo de cours").
+
+Nous avons créé une page d'accueil listant les vidéos disponibles (cf. Fig. 3), afin que l'utilisateur puisse sélectionner une vidéo à consulter. Nous avons utilisé un framework de mise en page minimaliste ([PicoCSS](https://picocss.com/)), et React pour construire notre site.
+
 ![Maquette page choix cours](./maquettes/accueil.png)
+__Fig.3__: Prototype de la page d'accueil, présentant les vidéos de cours.
 
-Nous avons créé une page d'accueil listant les vidéos disponibles.
+Pour nous donner une première idée, un benchmark de l'impact environnemental de la page d'accueil a été réalisé pour nous comparer aux autres acteurs du domaine. Les résultats sont encourageants, car la note des autres sites oscille entre E et G.
 
-Pour nous donner une première idée, un benchmark de l'impact environnemental de la page d'accueil a été réalisé pour nous comparer aux autres acteurs du domaine. Les résultats sont encourrageants, car la note des autres site oscile entre E et G.
-
-| Environnement                                | Nombre requêtes | Taille (ko) | Taille du dom | GES (gCO2e)  | ecoIndex | Note              |
-| --------------------------------------- | --------------- | ----------- | ------------- | ---- | -------- | ----              |
-| Chargement de la page d’accueil         | 22             | 1 879       | 49        | 1,34 | 82.81     | :green_circle: A    |
-| Connexion et retour à la page d'accueil | 5              | 342       | 46        | 1,14 | 92,88    | :green_circle: A |
-
-__Tab.1__: Évaluation de l'impact du prototype de la page d'accueil.
-
-En reprenant notre [scénario n°1](benchmark.md) pour évaluer l'impact en simulant une utilisation normale on obtient ce tableau de résulats :
+En reprenant notre [scénario n°1](benchmark.md) pour évaluer l'impact en simulant une utilisation normale, on obtient ce tableau de résulats :
 
 | Scénario                                | Nombre requêtes | Taille (ko) | Taille du dom | GES (gCO2e)  | ecoIndex | Note              |
 | --------------------------------------- | --------------- | ----------- | ------------- | ---- | -------- | ----              |
@@ -82,7 +77,7 @@ En reprenant notre [scénario n°1](benchmark.md) pour évaluer l'impact en simu
 | Visionnage du cours                     | 7               | 18 637      | 29         | 1,39  | 80,28     | :green_circle: A    |
 | Total                                   | **18**          | **19 391**  | **104**    | **3,66** |          |                   |
 
-__Tab.2__: Évaluation de l'impact du scénario "Consulter une vidéo de cours" dans le prototype n°1.
+__Tab.1__: Évaluation de l'impact du scénario "Consulter une vidéo de cours" dans le prototype n°1.
 
 ## Prototype n°2
 Dans cette version du prototype, les données statiques sont désormais chargées par le frontend à travers le réseau immédiatement après un premier affichage à vide. Une page affichée correspond à une requête sur le réseau.
