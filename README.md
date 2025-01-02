@@ -6,7 +6,7 @@ Nous serons, en tant qu'ingénieurs, intégrés à un environnement de travail e
 
 Nous sommes également, en tant que jeunes adultes, des personnes curieuses de se développer personnellement et de s’investir dans divers loisirs.
 
-L’apprentissage en ligne représente pour nous une activité fréquente et indispensable. Au-delà de nos usages personnels, le marché du e-learning concerne également les entreprises, les salariés et les universités. Il s'agit d'une bonne option pour les entreprises qui veulent former leurs employés à Python par exemple. C’est un marché en forte croissance (croissance d’environ 10% par an depuis 2020), et qui touche de plus en plus de catégories socio-économiques. C’est pourquoi il nous a semblé intéressant d’essayer de réduire son impact écologique.
+L’apprentissage en ligne représente pour nous une activité fréquente et indispensable. Au-delà de nos usages personnels, le marché du e-learning concerne également les entreprises, les salariés et les universités. Il s'agit d'une bonne option pour les entreprises qui veulent former leurs employés à Python par exemple. C’est un marché en forte croissance (croissance d’environ 10% par an depuis 2020), et qui touche de plus en plus de catégories socio-économiques.
 
 ## L’apprentissage en ligne pour favoriser l’éducation
 L’éducation est un pilier de la société. Elle permet :
@@ -17,12 +17,21 @@ L’éducation est un pilier de la société. Elle permet :
 L’éducation est une ressource qui peut s’avérer difficile d’accès. Néanmoins, 2/3 de la population mondiale à aujourd’hui accès à Internet. L’apprentissage en ligne s’impose alors comme un moyen naturel d’améliorer l’accessibilité et la diffusion du savoir à plus grande échelle, pour améliorer l’accès à l’éducation.
 
 ## Impact écologique de la numérisation de l’éducation
-A première vue, la transition numérique de l’éducation et des formations tendrait à réduire l'empreinte carbone des formations / séminaires, quantifiée en moyenne par :
+Du fait de son importance sociale, et de l'échelle important du marché du e-learning, nous avons trouvé pertinent de comprendre son impact écologique.
+
+À première vue, la transition numérique de l’éducation et des formations tendrait à réduire l'empreinte carbone des formations / séminaires par subsitution. Elle doit en théorie limiter certains facteurs, que l'on peut unitairement quantifier en moyenne par :
 - 50g de CO2 par passager par km pour le transport ([Rapport ADEME](https://impactco2.fr/outils/transport)),
 - 10kg de CO2 par personne par nuit pour l’hébergement et la restauration ([Rapport ADEME](https://nosgestesclimat.fr/documentation/logement/vacances/empreinte-hotel-par-nuit)),
 - utilisation de support (papier ou numérique) difficile à quantifier.
+Néanmoins, même si l'effet de subsitution existe, il reste assez difficile à quantifier à l'échelle d'un pays, et il n'est pas systématique (il existe toujours des séminaires et des formations où la présence physique est nécessaire).
 
-Cependant, l’éducation en ligne créé un flux numérique qui est à considérer. De plus, son but intrinsèque est d’être le plus démocratisé possible, et ce projet peut-être soumis à un potentiel effet rebond. Pour limiter ces facteurs qui rendraient le projet moins impactant, il est important de réfléchir aux compromis entre suppression de fonctionnalités et utilisabilité pour rester concurrentiel
+Puis, si l'on s'intéresse de plus près à l'impact écologique de l'éducation en ligne, on observe qu'elle créé un flux numérique qui est à considérer (notamment par le flux vidéo). En effet, selon plusieurs sources, on peut quantifier l'empreinte carbone d'une heure de streaming vidéo : entre 30 et 55g de CO2 ([Article Netflix](https://about.netflix.com/fr/news/the-true-climate-impact-of-streaming), [Reportage TF1](https://www.tf1info.fr/environnement-ecologie/non-l-empreinte-carbone-d-une-heure-de-streaming-quotidien-en-un-an-n-est-pas-egale-a-celle-d-un-vol-paris-new-york-2245161.html)). Les principales émissions sont cachées : la majeure partie des émissions proviennent du fonctionnement permanent des infrastructures qui composent Internet, un levier sur lequel on ne peut pas agir. Le coût proposé ci-dessus est net de ces émissions, et ne représente que le coût réel de transmission des données à travers Internet. 
+
+Enfin, le e-learning porte en lui la volonté d'être le plus démocratisé et accessible possible, soumettant la plupart des projets qui y sont liés à l'effet rebond. 
+
+Pour réussir à produire une plateforme de e-learning avec un impact carbone minime, il faut minimiser l'action de ce que l'on peut maîtriser :
+- Encourager les créateurs de contenus à s'orienter vers des supports de transmission plus sobres (image, texte, audio), et n'utiliser la vidéo uniquement lorsque cela est nécessaire
+- Limiter au mieux l'empreinte carbone de diffusion de supports à forte émissions, en compressant par exemple les données
 
 ## Impact d'un scénario sur deux plateformes de e-learning
 Nous nous mettons ici à la place d'un étudiant, qui souhaite se former au deep learning sur internet. Le scénario consiste à accéder à une vidéo avec les étapes suivantes:
