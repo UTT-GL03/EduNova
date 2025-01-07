@@ -66,7 +66,7 @@ Nous avons créé une page d'accueil listant les vidéos disponibles (cf. Fig. 3
 ![Maquette page choix cours](./maquettes/accueil.png)
 __Fig.3__: Prototype de la page d'accueil, présentant les vidéos de cours.
 
-Afin de pouvoir exécuter notre scénario, nous avons également conçu une page permettant de consulter les vidéos de cours, en respectant les choix de notre maquette. Cette page est accessible en cliquant sur une miniature. Chaque vidéo possède un identifiant incrémental unique.
+Afin de pouvoir exécuter notre scénario, nous avons également conçu une page permettant de consulter les vidéos de cours, en respectant les choix de notre maquette. Cette page est accessible en cliquant sur une miniature.
 
 ![Maquette page choix cours](./maquettes/video.png)
 __Fig.4__: Prototype de la page d'une vidéo, avec sa transcription et son titre.
@@ -103,12 +103,14 @@ __Fig.6__: Consommation de ressources par le serveur Web lors de la consultation
 
 Pour avoir un point de comparaison, voici le rapport sur un site OpenClassroom, une référence du domaine (cf. Fig.6). Sur OpenClassrooms, la vidéo est chargée au moment du lancement par l'utilisateur déjà authentifié (clique sur le bouton "play"). Comme il est impossible de s'authentifier via greenframe, le scénarion de consultation de la page de cours n'inclue pas l'impact de chargement de la vidéo du cours.
 
-On voit que la consommation est supérieure sur tous les points, même sans vidéo, notamment au niveau de la consommation de l'écran et du CPU. Au niveau du réseau, ce n'est pas vraiment comparable à ce stade étant donnée que notre site fait une unique requête et utilise des données statiques.
+On voit que la consommation est supérieure sur tous les points, même sans vidéo, notamment au niveau de la consommation de l'écran et du CPU.
 
 ![greenframe openclassroom](greenframe/Consommation_OpenClassrooms.png)
 
 __Fig.7__: Consommation des ressources par le client lors de la consultation de la page d'accueil d'un cours sur OpenClassrooms.
 
+
+Lorsqu'on regarde une vidéo, on observe une hausse important de la consommation du réseau, liée à la transmission du fichier vidéo (cf. Fig. 8 et Fig. 9).
 
 ![greenframe openclassroom](greenframe/PT2_Browser_VideoCours.png)
 
@@ -149,7 +151,7 @@ __Fig.15__: Consommation des ressources par CouchDB lors de la consultation d'un
 Cette baisse d'impact du réseau est cependant largement compensée par une utilisation du CPU par la base de données, utilisation qui semble par ailleurs continue (cf. Fig. 15).
 
 ## Prototype n°4 Passage à l'échelle
-On simule le passage à des centaines de créateurs en augmentant de 20 à 2000 le nombre de vidéos (environ 20 vidéos par créateurs, soit 1 à 2 mois de travail environ). Dans cette partie, on ne s'intéresse qu'à la consommation en ressources la page d'accueil. En effet, la consultation d'une vidéo de cours n'est pas impactée par le passage à l'échelle : qu'il y ait 20 ou 2000 vidéos, la page de consultation n'en charge qu'une seule. Nous obtiendrions les même résultats que les précédents.
+On simule le passage à des centaines de créateurs en augmentant de 20 à 2000 le nombre de vidéos (environ 20 vidéos par créateurs, soit 1 à 2 mois de travail environ). Dans cette partie, on ne s'intéresse qu'à la consommation en ressources de la page d'accueil. En effet, la consultation d'une vidéo de cours n'est pas impactée par le passage à l'échelle : qu'il y ait 20 ou 2000 vidéos, la page de consultation n'en charge qu'une seule. Nous obtiendrions les même résultats que les précédents.
 
 Le changement le plus frappant, mais prévisible, est l'augmentation de l'utilisation du réseau par CouchDB (__Fig.16__) et par le client (cf Fig. 16). En effet, lors du chargement de la page d'accueil, les 2000 miniatures des vidéos de cours (2000 images de 0,228 Mo) sont requêtées à travers le réseau. Nous avons volontairement retiré l'utilisation du cache, pour simuler le fait que toutes les miniatures chargées par le site sont différentes. On observe également une augmentation considérable de l'utilisation du CPU.
 
@@ -163,19 +165,24 @@ __Fig.16__: Consommation des ressources par le client lors de la consultation d'
 
 __Fig.17__: Consommation des ressources par la base de données lors du chargement de la page d'accueil.
 
-Pour limiter les effets de mise à l'échelle, on réduit nombre d'item chargé dans la page principale avec la requette Mango (24 items par requête). Cela est une solution qui semble raisonnable, étant donné qu'un utilisateur n'a pas besoin que le site charge tous les cours disponibles.
+Pour limiter les effets de mise à l'échelle, on réduit le nombre d'items chargé dans la page principale par la requête à la base de données (24 items par requête). Cela est une solution qui semble raisonnable, étant donné qu'un utilisateur n'a pas besoin que le site charge tous les cours disponibles. On intègre un mécanisme de pagination, qui au clic de l'utilisateur, permet de charger plus de vidéos que les 24 initiales.
 
-Comme on limite le nombre de cours affichés à l'utilisateurs, il faut choisir les cours pertinents à afficher. On peut choisir parmi 2 stratégies :
+Comme on limite le nombre de cours affichés à l'utilisateurs, il faut choisir les cours pertinents à afficher. On peut choisir parmi 3 stratégies :
 - Afficher en premier les cours les plus récents (publiés le plus proche de la date de consultation)
 - Afficher en premier les cours à l'aide d'un algorithme de recommendation (pertinence, vidéo pour lesquelles l'utilisateur n'a pas fini le visionnage, ...)
+- Afficher les cours les plus populaires
 
-De par le coût en ressources et la complexité d'un algorithme de recommendation, nous nous sommes orientés vers la solution la plus simple. Seulement les cours les plus récemment publiés sont affichés en premier à l'utilisateur. Le résultat de cette décision a largement optimisé l'utilisation des ressources avec 2000 vidéos (cf. Fig. 18).
+De par le coût en ressources et la complexité d'un algorithme de recommendation, nous nous sommes orientés vers une solution plus simple. Etant donné que nous n'avons pas de métrique de popularité car notres site n'est pas déployé, nous avons décidé que les cours les plus récemment publiés sont affichés en premier à l'utilisateur. Cela va permettre de limiter le nombre de pages que l'utilisateur va devoir consulter, et donc la consommation réseau.
+
+Le résultat de cette décision a largement diminué la consommation réseau pour le chargement d'une page de 24 miniatures de vidéos (cf. Fig. 18). De plus, on note que nous disposons de 2000 vidéos, ce qui fait en théorie 83 pages. Il y a de fortes chances pour que l'utilisateur en charge moins, ce qui optimise considérablement notre site par rapport à celui où nous chargions les 2000 miniatures d'un coup.
 
 ![greenframe openclassroom](greenframe/PT4_Requête_Mango.png)
 
 __Fig.18__: Consommation des ressources par la base de données lors du chargement de la page d'accueil. Valeurs de référence pour la comparaison : Scénario de mise à l'échelle, avec le chargement des 2000 items.
 
 ## Prototype n°5 Compression des vidéos
+
+On voit que la compression des vidéos réduit la consommation réseau, ce qui était assez prévisible étant donnée que la taille des fichiers vidéos est réduite. On note cependant que le coût énergétique du visionnage d'une vidéo reste important, et qu'il vaut mieux encourager d'autres types de support plus sobres pour transmettre l'information lorsqu'une vidéo n'est pas nécessaire (graphique, image, audio, texte, ...).
 
 ![greenframe openclassroom](greenframe/passage_webm.png)
 
