@@ -45,9 +45,9 @@ Nous avons étudié l'impact d'un tel scénario sur deux plateformes connues dan
 
 ## Interfaces et jeu de données
 
-En parcourant les différents sites de e-learning, nous avons identifié deux interface principales qui permettent de rendre le site utilisable et fonctionnel : 
-- Une page avec un ensemble de vidéos de cours,
-- une fois la vidéo sélectionnée, une nouvelle page s'affiche, permettant de lire la vidéo et d'afficher un transcript en temps réel.
+En parcourant les différents sites de e-learning, nous avons identifié deux interfaces principales qui permettent de rendre le site utilisable et fonctionnel : 
+- une page avec un ensemble de vidéos de cours,
+- une fois la vidéo sélectionnée, une nouvelle page s'affiche, permettant de lire la vidéo et d'afficher une transcription en temps réel.
 
 ![Maquette page choix cours](./maquettes/page_choix_cours.png)
 __Fig.1__: Maquette de l'interface pour le choix du cours
@@ -58,8 +58,8 @@ __Fig.2__: Maquette de l'interface pour regarder une vidéo sélectionnée
 ## Prototype n°1 : Scénario prioritaire avec chargement statique des données
 
 Pour cette première version du prototype :
-- L'ensemble des données liées aux cours est chargé dans le code de manière statique,
-- Les fonctionnalités implémentées ne sont que celles nécessaires pour suivre le scénario prioritaire ("Consulter une vidéo de cours").
+- l'ensemble des données liées aux cours est chargé dans le code de manière statique,
+- les fonctionnalités implémentées ne sont que celles nécessaires pour suivre le scénario prioritaire ("Consulter une vidéo de cours").
 
 Nous avons créé une page d'accueil listant les vidéos disponibles (cf. Fig. 3), afin que l'utilisateur puisse sélectionner une vidéo à consulter. Nous avons utilisé un framework de mise en page minimaliste ([PicoCSS](https://picocss.com/)), et React pour construire notre site.
 
@@ -85,23 +85,23 @@ __Tab.1__: Évaluation de l'impact du scénario "Consulter une vidéo de cours" 
 
 ## Prototype n°2 : Scénario prioritaire avec chargement dynamique des données
 
-Dans cette version du prototype, les données statiques sont désormais chargées par le frontend à travers le réseau immédiatement après un premier affichage à vide. Une page affichée correspond à une requête sur le réseau.
+Dans cette version du prototype, les données statiques sont désormais chargées par le frontend à travers le réseau immédiatement après un premier affichage à vide.
 
 En ce qui concerne l'évaluation de l'impact environnemental du scénario, les résultats, à l'exception du nombre de requêtes incrémenté de 1, restent identiques à ceux présentés dans le tableau précédent (cf. Tab.1). Par ailleurs, à partir de cette version, sauf modifications majeures, l'EcoIndex ne devrait plus subir d'évolution significative. Nous passerons désormais à l'utilisation d'un autre outil, GreenFrame, qui se concentre sur l'évaluation de l'impact direct de la consultation (sans inclure la contribution au cycle de vie du terminal). Cet outil, plus fiable, s'appuie sur les statistiques d'utilisation des ressources physiques (CPU, mémoire, réseau, disque) pour fournir une analyse précise. Pour utiliser GreenFrame, nous avons du déployer notre application avec Docker.
 
-Dans le cas de notre prototype, le graphique (cf. Fig. 4) révèle un seul pic notable de consommation, à la fois pour le CPU et le réseau. De plus, cette consommation ne représente que 7 % de la consommation totale mesurée, le reste étant majoritairement attribué à l'écran sur toute la durée de l'analyse. Cela s'explique par le fait que les photos, vidéos et données quantitatives utilisées pour les cours sont encore statiques à ce stade.
+Dans le cas de notre prototype, le graphique (cf. Fig. 5) révèle un seul pic notable de consommation, à la fois pour le CPU et le réseau. De plus, cette consommation ne représente que 3 % de la consommation totale mesurée, le reste étant majoritairement attribué à l'écran sur toute la durée de l'analyse. Cela s'explique par le fait que les photos, vidéos et données quantitatives utilisées pour les cours sont encore statiques à ce stade.
 
 ![consomation accueil greenframe](greenframe/PT2_Browser_PageCours.png)
 
 __Fig.5__: Consommation des ressources par le client lors de la consultation de la page d'accueil de notre site.
 
-Par ailleurs, il nous est possible désormais d'évaluer l'impact écologique de la partie "serveur", possiblement hébergée par un data center (cf. Fig.5). Réduite au simple hébergement de données statiques sur un serveur Web, cette partie a pour l'instant un impact très faible et quasi négligeable (3%) par rapport à la partie "client".
+Par ailleurs, il nous est possible désormais d'évaluer l'impact écologique de la partie "serveur", possiblement hébergée par un data center (cf. Fig.6). Réduite au simple hébergement de données statiques sur un serveur Web, cette partie a pour l'instant un impact largement inférieur à la partie "client" grâce à l'absence d'écran qui représentait 97% de la consomation (cf. Fig.5).
 
 ![consomation accueil greenframe](greenframe/PT2_Host_PageCours.png)
 
 __Fig.6__: Consommation de ressources par le serveur Web lors de la consultation d'un cours dans notre prototype.
 
-Pour avoir un point de comparaison, voici le rapport sur un site OpenClassroom, une référence du domaine (cf. Fig.6). Sur OpenClassrooms, la vidéo est chargée au moment du lancement par l'utilisateur déjà authentifié (clique sur le bouton "play"). Comme il est impossible de s'authentifier via greenframe, le scénarion de consultation de la page de cours n'inclue pas l'impact de chargement de la vidéo du cours.
+Pour avoir un point de comparaison, voici le rapport sur un site OpenClassroom, une référence du domaine (cf. Fig.7). Sur OpenClassrooms, la vidéo est chargée au moment du lancement par l'utilisateur déjà authentifié (clique sur le bouton "play"). Comme il est impossible de s'authentifier via greenframe, le scénario de consultation de la page de cours n'inclue pas l'impact de chargement de la vidéo du cours.
 
 On voit que la consommation est supérieure sur tous les points, même sans vidéo, notamment au niveau de la consommation de l'écran et du CPU.
 
@@ -153,7 +153,7 @@ Cette baisse d'impact du réseau est cependant largement compensée par une util
 ## Prototype n°4 Passage à l'échelle
 On simule le passage à des centaines de créateurs en augmentant de 20 à 2000 le nombre de vidéos (environ 20 vidéos par créateurs, soit 1 à 2 mois de travail environ). Dans cette partie, on ne s'intéresse qu'à la consommation en ressources de la page d'accueil. En effet, la consultation d'une vidéo de cours n'est pas impactée par le passage à l'échelle : qu'il y ait 20 ou 2000 vidéos, la page de consultation n'en charge qu'une seule. Nous obtiendrions les même résultats que les précédents.
 
-Le changement le plus frappant, mais prévisible, est l'augmentation de l'utilisation du réseau par CouchDB (__Fig.16__) et par le client (cf Fig. 16). En effet, lors du chargement de la page d'accueil, les 2000 miniatures des vidéos de cours (2000 images de 0,228 Mo) sont requêtées à travers le réseau. Nous avons volontairement retiré l'utilisation du cache, pour simuler le fait que toutes les miniatures chargées par le site sont différentes. On observe également une augmentation considérable de l'utilisation du CPU.
+Le changement le plus frappant, mais prévisible, est l'augmentation de l'utilisation du réseau par CouchDB (Fig.17) et par le client (cf Fig. 16). En effet, lors du chargement de la page d'accueil, les 2000 miniatures des vidéos de cours (2000 images de 0,228 Mo) sont requêtées à travers le réseau. Nous avons volontairement retiré l'utilisation du cache, pour simuler le fait que toutes les miniatures chargées par le site sont différentes. On observe également une augmentation considérable de l'utilisation du CPU.
 
 En passant de 20 à 2000, on multiplie environ par 100 l'utilisation du réseau, et par 20 l'utilisation CPU du client et de CouchDB.
 
@@ -169,10 +169,10 @@ Pour limiter les effets de mise à l'échelle, on réduit le nombre d'items char
 
 Comme on limite le nombre de cours affichés à l'utilisateurs, il faut choisir les cours pertinents à afficher. On peut choisir parmi 3 stratégies :
 - Afficher en premier les cours les plus récents (publiés le plus proche de la date de consultation)
-- Afficher en premier les cours à l'aide d'un algorithme de recommendation (pertinence, vidéo pour lesquelles l'utilisateur n'a pas fini le visionnage, ...)
+- Afficher en premier les cours à l'aide d'un algorithme de recommandation (pertinence, vidéo pour lesquelles l'utilisateur n'a pas fini le visionnage, ...)
 - Afficher les cours les plus populaires
 
-De par le coût en ressources et la complexité d'un algorithme de recommendation, nous nous sommes orientés vers une solution plus simple. Etant donné que nous n'avons pas de métrique de popularité car notres site n'est pas déployé, nous avons décidé que les cours les plus récemment publiés sont affichés en premier à l'utilisateur. Cela va permettre de limiter le nombre de pages que l'utilisateur va devoir consulter, et donc la consommation réseau.
+De par le coût en ressources et la complexité d'un algorithme de recommandation, nous nous sommes orientés vers une solution plus simple. Etant donné que nous n'avons pas de métrique de popularité car notres site n'est pas déployé, nous avons décidé que les cours les plus récemment publiés sont affichés en premier à l'utilisateur. Cela va permettre de limiter le nombre de pages que l'utilisateur va devoir consulter, et donc la consommation réseau.
 
 Le résultat de cette décision a largement diminué la consommation réseau pour le chargement d'une page de 24 miniatures de vidéos (cf. Fig. 18). De plus, on note que nous disposons de 2000 vidéos, ce qui fait en théorie 83 pages. Il y a de fortes chances pour que l'utilisateur en charge moins, ce qui optimise considérablement notre site par rapport à celui où nous chargions les 2000 miniatures d'un coup.
 
