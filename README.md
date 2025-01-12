@@ -30,8 +30,8 @@ Puis, si l'on s'intéresse de plus près à l'impact écologique de l'éducation
 Enfin, le e-learning porte en lui la volonté d'être le plus démocratisé et accessible possible, soumettant la plupart des projets qui y sont liés à l'effet rebond. 
 
 Pour réussir à produire une plateforme de e-learning avec un impact carbone minime, il faut minimiser l'action de ce que l'on peut maîtriser :
-- Encourager les créateurs de contenus à s'orienter vers des supports de transmission plus sobres (image, texte, audio), et n'utiliser la vidéo uniquement lorsque cela est nécessaire
-- Limiter au mieux l'empreinte carbone de diffusion de supports à forte émissions, en compressant par exemple les données
+- encourager les créateurs de contenus à s'orienter vers des supports de transmission plus sobres (image, texte, audio), et n'utiliser la vidéo uniquement lorsque cela est nécessaire,
+- limiter au mieux l'empreinte carbone de diffusion de supports à forte émissions, en compressant par exemple les données.
 
 ## Scénario prioritaire : Consulter une vidéo de cours
 Nous nous mettons ici à la place d'un étudiant, qui souhaite se former au deep learning sur internet. Le scénario consiste à accéder à une vidéo avec les étapes suivantes:
@@ -168,9 +168,9 @@ __Fig.17__: Consommation des ressources par la base de données lors du chargeme
 Pour limiter les effets de mise à l'échelle, on réduit le nombre d'items chargé dans la page principale par la requête à la base de données (24 items par requête). Cela est une solution qui semble raisonnable, étant donné qu'un utilisateur n'a pas besoin que le site charge tous les cours disponibles. On intègre un mécanisme de pagination, qui au clic de l'utilisateur, permet de charger plus de vidéos que les 24 initiales.
 
 Comme on limite le nombre de cours affichés à l'utilisateurs, il faut choisir les cours pertinents à afficher. On peut choisir parmi 3 stratégies :
-- Afficher en premier les cours les plus récents (publiés le plus proche de la date de consultation)
-- Afficher en premier les cours à l'aide d'un algorithme de recommandation (pertinence, vidéo pour lesquelles l'utilisateur n'a pas fini le visionnage, ...)
-- Afficher les cours les plus populaires
+- Afficher en premier les cours les plus récents (publiés le plus proche de la date de consultation),
+- afficher en premier les cours à l'aide d'un algorithme de recommandation (pertinence, vidéo pour lesquelles l'utilisateur n'a pas fini le visionnage, ...),
+- afficher les cours les plus populaires
 
 De par le coût en ressources et la complexité d'un algorithme de recommandation, nous nous sommes orientés vers une solution plus simple. Etant donné que nous n'avons pas de métrique de popularité car notres site n'est pas déployé, nous avons décidé que les cours les plus récemment publiés sont affichés en premier à l'utilisateur. Cela va permettre de limiter le nombre de pages que l'utilisateur va devoir consulter, et donc la consommation réseau.
 
