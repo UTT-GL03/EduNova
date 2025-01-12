@@ -196,7 +196,10 @@ Ce projet a été marqué par plusieurs surprises : l’impact prédominant de l
 
 ## Perspectives
 
-Nous aurions aimé implémenter d'autres fonctionnalités, qui aurait pu être sujet à des études pertinentes sur l'impact écologique de celles-ci. 
-Tout d'abord, l'intégration d'un système de recommandation basé sur des algorithmes de machine learning sobres en énergie pourrait enrichir l'expérience utilisateur en proposant des contenus personnalisés tout en optimisant les ressources. Cette fonctionnalité pourrait être pensée avec des techniques d'apprentissage décentralisé, telles que le fédéré learning, afin de limiter les échanges de données et réduire l'empreinte carbone. Elle pourrait utiliser un modèle peu complexe, pour limiter la consommation liée à l'inférence.
+Nous aurions aimé tester d'autres fonctionnalités, qui auraient pu être sujet à des études pertinentes sur l'impact écologique de celles-ci. 
 
-Par ailleurs, nous souhaitions que la plateforme ait un aspect collaboratif. l’implémentation de fonctionnalités de collaboration, comme des espaces de travail partagés ou des forums interactifs, pourrait renforcer l’aspect communautaire de la plateforme. Cependant, ces développements nécessitent une réflexion approfondie sur l’équilibre entre l’enrichissement fonctionnel, l’impact énergétique et l'impact du comportement des utilisateurs.
+Tout d'abord, la mise en place d'un reverse proxy comme HAProxy par exemple. Celui-ci permettrait de mettre en cache les réponses du serveur, de les compresser et d'utliser le multiplexage présent dans [HTTP/2](https://developer.mozilla.org/fr/docs/Glossary/HTTP_2).
+
+On peut aussi penser à l'intégration d'un système de recommandation basé sur des algorithmes de machine learning sobres en énergie qui pourrait enrichir l'expérience utilisateur en proposant des contenus personnalisés tout en optimisant les ressources. Cette fonctionnalité pourrait être pensée avec des techniques d'apprentissage décentralisé, telles que l'apprentissage fédéré, afin de limiter les échanges de données et réduire l'empreinte carbone. Elle pourrait utiliser un modèle peu complexe, pour limiter la consommation liée à l'inférence.
+
+Par ailleurs, nous souhaitions que la plateforme ait un aspect collaboratif. L’implémentation de fonctionnalités de collaboration, comme des espaces de travail partagés ou des forums interactifs, pourrait renforcer l’aspect communautaire de la plateforme. Cependant, ces développements nécessitent une réflexion approfondie sur l’équilibre entre l’enrichissement fonctionnel, l’impact énergétique et l'impact du comportement des utilisateurs.
